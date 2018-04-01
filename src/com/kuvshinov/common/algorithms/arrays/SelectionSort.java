@@ -1,7 +1,5 @@
 package com.kuvshinov.common.algorithms.arrays;
 
-import java.util.Random;
-
 /**
  * Simple sorting. My favorite in school time :)
  * O(n^2)
@@ -45,17 +43,10 @@ public class SelectionSort implements Sorting {
 
     public static void main(String[] args) {
         System.out.println("Selection sort for array:");
-        int[] arr = new int[10];
-        Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            arr[i] = random.nextInt(20);
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
+        int[] arr = Utils.createArray(10);
+        Utils.printArray(arr);
         Sorting sorting = new SelectionSort();
         sorting.sort(arr);
-        for (int i = 0; i < 10; i++) {
-            System.out.print(arr[i] + " ");
-        }
+        Utils.printArray(arr);
     }
 }
