@@ -1,5 +1,10 @@
 package com.kuvshinov.common.algorithms.structures.queue;
 
+/**
+ * Realization of classic FIFO and some methods from {@link java.util.Queue}.
+ *
+ * @param <T>
+ */
 public class QueueList<T> {
 
     private Node<T> head;
@@ -87,6 +92,22 @@ public class QueueList<T> {
         return size;
     }
 
+    /**
+     * Classic question on interview :)
+     */
+    public void revert() {
+        Node current = head, prev = null, temp;
+        while (current != null) {
+            temp = current.next;
+            current.next = prev;
+            prev = current;
+            current = temp;
+        }
+        temp = last;
+        head = last;
+        last = temp;
+    }
+
     static class Node<T> {
         T value;
         Node<T> next;
@@ -103,7 +124,7 @@ public class QueueList<T> {
             System.out.print(list.get(i) + " ");
         }
         System.out.println();
-        list.remove(4);
+        list.revert();
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i) + " ");
         }
